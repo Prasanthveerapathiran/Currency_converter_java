@@ -1,0 +1,47 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: dreamBox
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/currencyConvertion
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: false
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+currencybeacon:
+  api:
+    key: 1SMxQumaAcC996SUXGsnlBPW44t2RR82
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.springframework.security: WARN
+    com.tectot.inventory.system.utils: DEBUG
+    com.logging: DEBUG
+  file:
+    name: app/logs/dreamBox-service.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{correlationId}] [%level] %c{1.} [%t] %m%n"
+  rollover:
+    enabled: true
+    max-history: 30
+    file-name-pattern: app/logs/archive/wellNest-service.%d{yyyy-MM-dd}.log
